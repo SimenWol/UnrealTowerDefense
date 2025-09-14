@@ -1,0 +1,13 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": 5.54,
+  "Category": "",
+  "Description": "",
+  "Modules": [
+    {
+      "Name": "UnrealTowerDefenseCore",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
