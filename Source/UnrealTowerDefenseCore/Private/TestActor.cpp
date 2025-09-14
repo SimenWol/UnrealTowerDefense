@@ -19,5 +19,5 @@ void ATestActor::BeginPlay()
 {
     Super::BeginPlay();
 
-    UE_LOG(LogAudioAnalyzerCore, Log, TEXT("%s: on BeginPlay, Value is %d"), *GetName(), SomeProperty);
+    UE_LOG(LogUnrealTowerDefenseCore, Log, TEXT("%s: on BeginPlay, Value is %d"), *GetName(), SomeProperty);
 }
