@@ -11,5 +11,5 @@ class ATDGameMode : public AGameModeBase
     GENERATED_BODY()
 
 public:
-    //
+    ATDGameMode(const FObjectInitializer& ObjectInitializer);
 };
