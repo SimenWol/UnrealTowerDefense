@@ -1,0 +1,31 @@
+{
+	"FileVersion" : 3,
+	"Version" : 1,
+	"VersionName" : "1.0",
+	"FriendlyName" : "OmniCamera",
+	"Description" : "Adds a CameraRig actor and its components to manipulate the camera",
+	"Category" : "",
+	"CreatedBy" : "Simen Wolters",
+	"CreatedByURL" : "https://github.com/SimenWo",
+	"DocsURL" : "",
+	"MarketplaceURL" : "",
+	"SupportURL" : "",
+	"EnabledByDefault" : true,
+	"CanContainContent" : true,
+	"IsBetaVersion" : false,
+	"Installed" : false,
+	"Modules" :
+	[
+		{
+			"Name" : "OmniCameraCore",
+			"Type" : "Runtime",
+			"LoadingPhase" : "Default"
+		}
+	],
+	"Plugins": [
+    {
+		"Name": "EnhancedInput",
+		"Enabled": true 
+	}
+  ]
+}
