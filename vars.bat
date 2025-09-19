@@ -1,6 +1,6 @@
 REM @echo off
     
-set UE5_DIR=D:\Epic Games\UE_5.5
+set UE5_DIR=C:\Program Files\Epic Games\UE_5.5
 
 set ROOTDIR=%~dp0
 set ROOTDIR=%ROOTDIR:~0,-1%
