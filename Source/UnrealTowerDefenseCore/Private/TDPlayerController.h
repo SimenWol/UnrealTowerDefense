@@ -13,6 +13,10 @@ class ATDPlayerController : public APlayerController
 public:
     ATDPlayerController(const FObjectInitializer& ObjectInitializer);
     
+public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
     TObjectPtr<class UCameraRigControllerComponent> CameraRigControllerComponent;
+
+protected:
+    void SetupInputComponent() override;
 };

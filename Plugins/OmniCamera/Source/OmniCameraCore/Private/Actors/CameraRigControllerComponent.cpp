@@ -1,13 +1,29 @@
 #include "Actors/CameraRigControllerComponent.h"
 
 #include "Actors/CameraRig.h"
+#include "Components/CameraRigZoomComponent.h"
 #include "EngineUtils.h"
-#include "Log.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "Engine/LocalPlayer.h"
+#include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
+#include "Log.h"
 
 UCameraRigControllerComponent::UCameraRigControllerComponent(const FObjectInitializer& ObjectInitializer)
 {
     PrimaryComponentTick.bCanEverTick = true;
+}
+
+void UCameraRigControllerComponent::BindInput(UEnhancedInputComponent* EnhancedInputComponent)
+{
+    if (ensure(EnhancedInputComponent))
+    {
+        if (CameraZoomAction)
+        {
+            EnhancedInputComponent->BindAction(CameraZoomAction, ETriggerEvent::Triggered, this, &UCameraRigControllerComponent::Input_ZoomCamera);
+        }
+    }
 }
 
 void UCameraRigControllerComponent::BeginPlay()
@@ -15,6 +31,33 @@ void UCameraRigControllerComponent::BeginPlay()
     Super::BeginPlay();
 
     EnsureCameraRig();
+
+    if (APlayerController* PC = Cast<APlayerController>(GetOwner()))
+    {
+        if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
+        {
+            if (CameraDefaultInputMappingContext)
+            {
+                Subsystem->AddMappingContext(CameraDefaultInputMappingContext, 0);
+            }
+        }
+    }
+}
+
+void UCameraRigControllerComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+    Super::EndPlay(EndPlayReason);
+
+    if (APlayerController* PC = Cast<APlayerController>(GetOwner()))
+    {
+        if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
+        {
+            if (CameraDefaultInputMappingContext)
+            {
+                Subsystem->RemoveMappingContext(CameraDefaultInputMappingContext);
+            }
+        }
+    }
 }
 
 void UCameraRigControllerComponent::EnsureCameraRig()
@@ -74,5 +117,13 @@ void UCameraRigControllerComponent::EnsureCameraRig()
     {
         UE_LOG(LogOmniCameraCore, Warning, TEXT("Could not create or find a CameraRig"));
         return;
+    }
+}
+
+void UCameraRigControllerComponent::Input_ZoomCamera(const struct FInputActionValue& Value)
+{
+    if (SpawnedCameraRig)
+    {
+        SpawnedCameraRig->CameraZoom->OnZoomCamera(Value.Get<float>());
     }
 }
