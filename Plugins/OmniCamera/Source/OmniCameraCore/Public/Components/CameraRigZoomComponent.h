@@ -1,36 +1,29 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+#include "Components/CameraRigComponent.h"
 
 #include "CameraRigZoomComponent.generated.h"
 
 UCLASS()
-class UCameraRigZoomComponent : public UActorComponent
+class OMNICAMERACORE_API UCameraRigZoomComponent : public UCameraRigComponent
 {
     GENERATED_BODY()
 
 public:
-    UCameraRigZoomComponent(const FObjectInitializer& ObjectInitializer);
+    UCameraRigZoomComponent();
 
 public:
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="OmniCameraCore")
+    UPROPERTY(EditAnywhere, Category="OmniCameraCore")
     float ZoomSpeed;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="OmniCameraCore")
+    UPROPERTY(EditAnywhere, Category="OmniCameraCore")
     float MinArmLength;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="OmniCameraCore")
+    UPROPERTY(EditAnywhere, Category="OmniCameraCore")
     float MaxArmLength;
 
 public:
-    void BeginPlay() override;
     void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
     void OnZoomCamera(float Value);
-
-private:
-    UPROPERTY(VisibleAnywhere, Category="OmniCameraCore")
-    TObjectPtr<class ACameraRig> CameraRig;
 };
