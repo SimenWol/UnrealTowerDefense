@@ -1,6 +1,6 @@
 #include "TDPlayerController.h"
 
-#include "Actors/CameraRigControllerComponent.h"
+#include "Components/CameraRigControllerComponent.h"
 #include "EnhancedInputComponent.h"
 
 ATDPlayerController::ATDPlayerController(const FObjectInitializer& ObjectInitializer)

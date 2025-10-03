@@ -1,4 +1,4 @@
-#include "Actors/CameraRigControllerComponent.h"
+#include "Components/CameraRigControllerComponent.h"
 
 #include "Actors/CameraRig.h"
 #include "Components/CameraRigZoomComponent.h"
