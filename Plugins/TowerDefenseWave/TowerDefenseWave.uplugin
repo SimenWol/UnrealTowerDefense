@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "TowerDefenseWave",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "Simen Wolters",
+	"CreatedByURL": "https://github.com/SimenWol",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules":
+    [
+		{
+			"Name": "TowerDefenseWaveCore",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins":
+    [
+		{
+			"Name": "OmniWave",
+			"Enabled": true
+		}
+	]
+}
